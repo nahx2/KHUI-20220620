@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부서목록 - DataGrid(javascript)</title>
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/jquery.easyui.min.js"></script>
+  <link rel="stylesheet" href="../../themes/default/easyui.css">
+  <link rel="stylesheet" href="../../themes/icon.css">
+  <script>
+    function deptList(){
+      $('#dg-dept').datagrid({
+      url:'./dept.json',
+    })
+    }
+  </script>
+</head>
+<body>
+  <table id="dg-dept"></table>
+  <div id ="tb-dept" style="padding: 5px 5px;">
+    <a href="javascript:deptList()" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+  </div>
+  <script>
+    $('#dg-dept').datagrid({
+        title:'부서관리시스템',
+        method:'get',
+        toolbar : '#tb-dept',
+        columns:[[
+          {field:'deptno', title:'부서번호', width:100}
+          ,{field:'dname', title:'부서명', width:100}
+          ,{field:'loc',title:'지역',width:100}
+        ]]
+    });
+  </script>
+</body>
+</html>

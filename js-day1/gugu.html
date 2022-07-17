@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구구단(시작단과 끝단을 입력 받아서)</title>
+</head>
+  <script>
+  
+    function guguDanPrint(p_start, p_end){
+      alert(`guguDanPrint출력성공 ${p_start}단 에서${p_end}단까지`);
+       document.write("<table border='3px'>");//1
+       document.write("<tr>");//1
+ 
+        for(let j=p_start;j<=p_end;j++){
+        document.write("<td>");//1
+        document.write("<table width ='500px' height = '300px' border='1px'>");//2
+          document.write("<tr>");//2
+            document.write("<th colspan = 2 bgcolor = 'yellow' > "+`${j}`+"단   </th></tr>");
+
+        for(let i=1;i<=9;i++){
+              var r = j*i;
+                document.write("<tr>"+"<td>"+`${j}*${i}`+"</td>"+"<td>"+r+"</td>"+"</tr>");
+                document.write("</tr>");//2
+              } 
+
+              document.write("</table>");//2
+              document.write("</td>");//1
+            }
+
+            document.write("</tr>");//1
+       document.write("</table>");//1
+    }
+  </script>
+<body>
+  <form name="f_dan">
+  시작단 <input type="text"  name="start" > <br/>
+  끝 단 <input type="text"  name="end" > <br/>
+  <button onclick="guguDanPrint(document.f_dan.start.value,document.f_dan.end.value)">
+    구구단출력
+    </button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* * {
+      border: 1px solid red;
+  } */
+
+  .header {
+    display: flex;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+    background-color: black;
+    color: white ;
+
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+  }
+
+  .input {
+    flex-basis: 100%;
+    font-size: 1.2rem;
+  }
+  
+  .container {
+      width: 100%;
+      padding: 0.2em;
+  }
+  
+  .videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+      flex-wrap: wrap;
+      list-style: none;
+      padding-left: 0px;
+      margin: 0;
+  }
+  
+  .video {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      border: 1px solid lightgray;
+      box-shadow: 3px 3px 5px 0px rgba(191, 191, 191, 0.5);
+      cursor: pointer;
+      flex-grow: 1;
+      transition: transform 250ms ease-in;
+  }
+  
+  .video:hover {
+      transform: scale(1.02);
+  }
+  
+  .thumbnail {
+      width: 40%;
+      height: 100%;
+  }
+  
+  .title, .channel {
+      margin: 10px;
+      font-size: 0.8rem;
+  }

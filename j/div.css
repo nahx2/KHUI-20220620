@@ -1,0 +1,30 @@
+@charset 'UTF-8';/*인코딩 타입 설정*/
+.all{
+  width: 300px;
+  height: 300px;
+  border : 3px solid black;
+  margin: 100px auto;
+  background-color: red;
+  float: right;
+}
+.all .f{
+  display : inline;
+
+  margin: 100px auto;
+
+}
+.all .s{
+  display : inline;
+
+  margin: 100px auto;
+  float: left;
+
+}
+.all .t{
+  display : inline;
+
+  margin: 100px auto;
+
+  float: right;
+
+}

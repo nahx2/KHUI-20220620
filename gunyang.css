@@ -1,0 +1,23 @@
+* {
+  text-align: center;
+  padding: 20px;
+  border: 3px black;
+}
+.wjs>.wjs2{
+  
+}
+.wjs2 {
+  padding: 20px;
+border: 1px black;
+display: inline-flex;
+}
+
+.ghl {
+  margin-right: 10px;
+background-color: gray;
+
+}
+
+.fh {
+background-color: orange;
+}

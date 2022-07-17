@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인라인요소와 블록요소</title>
+    <style>
+        div{
+            display : block;
+            width : 500px;
+            height : 500px;
+            border : 1px solid black;
+            background-color: aquamarine;
+        }
+        div#d_2{
+            display : inline;
+            width : 300px;
+            height : 300px;
+            background-color: orange;
+        }
+        span{
+              display : block;
+            width : 100px;
+            height : 100px;
+            background-color: beige;
+        }
+        .s_2{ 
+             display : inline;
+;
+            background-color: paleturquoise;
+        }
+        span#s_3{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>얼른 수업 끝났으면 좋겠어요<img src="..\images\kakao.jpg" alt ="댕스" width="250"></div>
+    <div id = "d_2" b>배는 안 고픈데 졸려요</div>
+    <span>오늘 밤에는 머먹지</span>
+    <span class = "s_2">점심은 아마도 편의점?</span><!--클래스는 .클래스-->
+    <span id = "s_3">Span3</span><!--아이디는 #아이디-->
+    <h1>블록요소 h1</h1>
+</body>
+</html>
+
+
+<!--
+    span태그는 폭과 높이를 주어도 먹지 않는다.
+    자체크기를 가지지 않기 때문에 크기를 지정할 수 없다.
+    블록요소는 크기를 변경할 수 있다
+    display 속성에 inline-block을 주면 두 가지를 다 사용 가능함 
+    display에 none을 주면 화면에 안보임. jf.setVisible(false);
+-->

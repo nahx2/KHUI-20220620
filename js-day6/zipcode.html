@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우편번호 검색기</title>
+  <script src = "./zipcode.js" defer></script>
+  <style>
+    .zipcode{
+      border: 3px solid darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id ="zip">
+  <label for="zipcode">우편번호</label>
+  <input type="text" name="zipcode" id="zipcode">
+  <input type="button" value="우편번호찾기" onclick="dongInput()">
+</div>
+<div id ="addr">
+  <label for="address">주&nbsp;소</label>
+  <input type="text" class="address" name="address" id="address">
+</div>
+<div id ="root"></div>
+</body>
+</html>

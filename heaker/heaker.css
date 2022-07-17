@@ -1,0 +1,46 @@
+/* * {
+      border: 1px solid red;
+  } */
+
+  .header {
+    display: flex;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+    background-color: black;
+    color: white ;
+
+  }
+
+
+  .input {
+    flex-basis: 100%;
+    font-size: 1.2rem;
+  }
+  
+  .container {
+      width: 100%;
+      padding: 0.2em;
+  }
+  
+  .newContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+      flex-wrap: wrap;
+      list-style: none;
+      padding-left: 0px;
+      margin: 0;
+      
+  }
+  
+ 
+  
+  .thumbnail {
+      width: 40%;
+      height: 100%;
+  }
+  
+  .user, .content {
+      margin: 10px;
+      font-size: 0.8rem;
+  }

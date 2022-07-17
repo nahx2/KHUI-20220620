@@ -1,0 +1,27 @@
+@charset 'UTF-8';/*인코딩 타입 설정*/
+div{
+  width: 300px;
+  height: 300px;
+  background-color: blanchedalmond;
+}
+div:hover{
+  background-color: blueviolet;
+}
+div:active{
+  border: 5px solid blue;
+}
+ul li:nth-of-type(1) {
+  border: 1px solid red;
+}
+ul li:nth-of-type(3){
+  border: 1px solid blue;
+}
+ul li:nth-last-of-type(1){
+  border: 1px solid gray;
+}
+ul li:last-child{
+  border: 1px solid orange;
+}
+ul li:nth-of-type(2n){
+  border: 1px solid purple;
+}

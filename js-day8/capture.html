@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .outer{
+      width:500px;
+      height: 500px;
+      background-color: beige;
+    }
+    .inner{
+      width : 50%;
+      height: 50%;
+      background-color: blueviolet;
+      transform: translateY(50%);
+    }
+    button {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  </style>
+
+</head>
+<body>
+  <div class="outer">
+    <div class="inner">
+      <button>Click Me</button>
+    </div>
+  </div>
+  <script>
+    const outer = document.querySelector(".outer");
+    const inner = document.querySelector(".inner");
+    const button = document.querySelector("button");
+    
+      outer.addEventListener('click',function(event) {
+      //넌 버블링 대상이네 그만 나가줄래? - 익명함수 탈출 - 리턴 만났으니까
+      if(event.target !== event.currentTarget){
+        return;
+      }
+    });
+
+
+
+    inner.addEventListener('click',(event) => {
+    console.log(`inner: ${event.target}, ${event.currentTarget}`);
+    });
+
+    button.addEventListener('click',(event) => {
+    console.log(`button1: ${evente.target}, ${event.currentTarget}`);
+    event.stopPropagation();
+    });
+    button.addEventListener('click',(event) => {
+    console.log(`button2: ${event.target}, ${event.currentTarget}`);
+    });
+  </script>
+</body>
+</html>

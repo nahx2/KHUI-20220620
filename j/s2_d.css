@@ -1,0 +1,86 @@
+
+    *{
+      border: 1px solid red;
+    }
+
+    .center{
+      position: absolute;
+      transform: translate(-50%,-50%);/*중심축설정*/
+      left: 50%; 
+      top: 50%;
+    }
+    /* .center>.item-wrap{
+      width: 350px;
+      height: 500px;
+      position: relative;
+      border-radius: 5%;
+    float: left;
+    } */
+    .card{
+    padding: 20px;
+    color: black;
+    background-color: lightgray;
+    width: 280px;
+    height: 360px;
+    border-radius: 8px;
+    margin: 30px;
+    text-align: center;
+    }
+
+    .card>img{
+      border-radius: 5%;
+      
+    }
+    .card>h1{
+     font-size: 20px;
+     text-align: left;
+     margin-top: 10px;
+     margin-bottom: 10px;
+
+    }
+    .card>p{
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .card-info{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    /* .card-info>.box4{
+      float: left;
+    }
+    .card-info>.box5{
+      float: right;
+    } */
+
+    .box4>img{
+      float: left;
+      border-radius: 50%;
+      margin-right: 10px;
+  }
+.box4>p{
+  float: left;
+}
+/* .box5{
+  float: right;
+  
+}
+.box5>div{
+  display: inline-flex;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  } */
+
+.box5>div{
+  display: inline-flex;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .box7{
+    margin-right: 20px;
+  } 

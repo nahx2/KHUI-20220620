@@ -1,0 +1,103 @@
+*{
+  box-sizing:  border-box;
+  /* border: 1px solid red; */
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+body{
+  background-color: black;
+}
+
+header{
+  /* width: 100px; */
+  border-bottom: 1px solid aqua; /*메뉴아래 구분선*/
+  display: flex;
+  justify-content: space-between;
+  top: 0px;
+  left: 0px;
+  align-items: center;
+  position: absolute;
+   z-index: 2;
+}
+
+header h1{
+  font: bold;
+  color: white;
+}
+
+header .gnb{
+  display: flex;
+}
+
+header .gnb li{
+  margin: 0px 20px;
+}
+
+header .gnb li a{
+  color: white;
+  letter-spacing: 2px;
+}
+
+header .gnb li.on a{
+  background-color: darkcyan;
+  color: whitesmoke;
+}
+
+header .Lnb{
+  display: flex;
+}
+
+header .Lnb li{
+  margin: 0px 10px;
+}
+
+header .Lnb li a{
+  font-size: 16px;
+  color: royalblue;
+ 
+}
+
+header .btnMenu{
+  font-size: 24px;
+  color: royalblue;
+  display: none;
+}
+
+.camp-bg{
+  width: 100%;
+  height: 100vh;
+}
+.video-wrap{
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+.video-wrap video{
+  display: block;
+  width: 100%;
+  height: 100vh;
+  object-fit: fill;
+}
+
+/* 반응형 웹 처리 */
+@media screen and (max-width: 1024px){
+  header .gnb{
+    display: none;
+  }
+  header .Lnb{
+    display: none;
+  }
+  header .btnMenu{
+    display: block;
+  }
+}
+

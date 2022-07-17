@@ -1,0 +1,39 @@
+/* * {
+  /*     border: 1px solid red; */
+  }
+   */
+  .container {
+      width: 50%;
+      padding: 0.2em;
+  }
+  
+  .videos {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding-left: 0px;
+      margin: 0;
+  }
+  
+  .video {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      border: 1px solid lightgray;
+      box-shadow: 3px 3px 5px 0px rgba(191, 191, 191, 0.5);
+      cursor: pointer;
+  }
+  
+  .video:hover {
+      transform: scale(1.02);
+  }
+  
+  .thumbnail {
+      width: 40%;
+      height: 100%;
+  }
+  
+  .title, .channel {
+      margin: 10px;
+      font-size: 0.8rem;
+  }

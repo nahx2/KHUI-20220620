@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    *{
+      border: 1px solid red;
+    }
+
+    .box1{
+      width: 450px;
+    height: 550px;
+    text-align: center;
+     border: 2px solid red;
+    }
+
+    .box2{
+      margin: 30px;
+      border-radius: 5%;
+      background-color: lightgray;
+    float: left;
+    }
+
+    .box2>img{
+      margin-top: 25px;
+      border-radius: 5%;
+    }
+    .box2>h1{
+      text-align: left;
+      margin: 25px;
+    }
+    .box2>p{
+      margin: 25px;
+      text-align: left;
+    }
+    .box2>.box3{
+      width: 336px;
+      margin-left: 25px;
+      margin-right: 25px;
+      margin-bottom: 25px;
+      float: left;
+    }
+    .box3>.box4{
+      float: left;
+    }
+    .box3>.box5{
+      float: right;
+    }
+
+    .box4>img{
+      float: left;
+      border-radius: 50%;
+      margin-right: 10px;
+  }
+.box4>p{
+  text-align: center;
+  margin-right: 0px;
+  float: left;
+}
+.box3>.box5{
+  float: right;
+  
+}
+.box5>div{
+  display: inline-flex;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .box7{
+    margin-right: 20px;
+  }
+
+  </style>
+</head>
+<body>
+  <!-- 각진 네모 -->
+  <div class="box1">
+    <!-- 카드 시작 -->
+    <div class="box2">
+      <!-- 카드 이미지 -->
+      <img src="https://placekitten.com/150/150" alt="키티">
+      <!-- 카드 내용1 -->
+      <h1>지금 웹 디자인을 배우는 건 너무 늦었나?</h1>
+      <!-- 카드 내용1 끝 -->
+      <!-- 카드 내용2 -->
+      <p>일반적으로 웹 디자인 혹은 앱 디자인을 하고 싶은 분들의 가장 큰 고민은 이 3가지라고 생각이 됩니다 고객의 비용과...</p>
+      <!-- 카드 내용2 끝 -->
+      <!-- 카드 내용3 -->
+      <div class="box3">
+        <div class="box4"><img src="https://placekitten.com/150/150" alt="키티" width="40"><p>이순신</p></div>
+        <div class="box5">
+          <div class="box6">
+          <div>72</div>
+          <div><img src="./KakaoTalk_20220701_175023373.png" alt="하트" width="20"></div>
+          </div>
+          <div class="box7">
+          <div>31</div>
+          <div><img src="./KakaoTalk_20220701_175023249.jpg" alt="말풍" width="20"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 카드 내용3 끝 -->
+    </div>
+    <!-- 카드 끝 -->
+  </div>
+  <!-- 각진네모 끝 -->
+</body>
+</html>

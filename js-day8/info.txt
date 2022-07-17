@@ -1,0 +1,17 @@
+Event
+: 무엇인가 일어나는 행위, 액션
+
+사용자가 발생하는ㄴ 이벤트
+onClick, mouseover, mousemove, mouseheel, scroll
+시스템이 발생시키는 이벤트
+error, load
+
+이벤트 연결 방법
+
+1) 이벤트 핸들러
+DOM요소(span, button, a).onClick = (event) => {실행문;} arrow function
+
+2) 내장 함수
+DOM요소.addEventListener('이벤트명(on제거하면 이벤트명이다)', (e) => {
+
+})

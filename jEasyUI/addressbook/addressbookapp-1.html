@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="../../themes/default/easyui.css">
+    <link rel="stylesheet" href="../../themes/icon.css">
+    <script>
+        function addressList(){
+            $('#dg_address').datagrid({
+                url:'./address.json',
+            })
+        }
+    </script>
+</head>
+<body>
+    <table id="dg_address" class="easyui-datagrid"></table>
+    <script>
+        //window.onload
+        $(document).ready(function(){
+            $('#dg_address').datagrid({
+                method:'get',
+                title:"주소록",
+                columns:[[
+                    {field:'name',title:'이름',width:100, align:'center'},
+                    {field:'birthday',title:'생일',width:150, align:'center'},
+                    {field:'address',title:'주소',width:250,align:'left'}
+                ]],
+                toolbar: [{
+                iconCls: 'icon-search',
+                handler: function(){
+                    addressList();
+                    }
+                },'-',{
+                iconCls: 'icon-edit',
+                handler: function(){alert('입력')}
+                },'-',{
+                iconCls: 'icon-reload',
+                handler: function(){alert('수정')}
+                },'-',{
+                iconCls: 'icon-cut',
+                handler: function(){alert('삭제')}
+            }]
+        })
+
+    });
+    </script>
+</body>
+</html>

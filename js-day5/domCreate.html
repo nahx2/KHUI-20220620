@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <div id="root">root</div>
+  <div id="root2">root</div>
+  <script>
+    const root = document.getElementById('root');
+    const root2 = document.getElementById('root2');
+
+    root.innerHTML = `
+    <ul>
+      <li>목록1</li>
+      <li>목록2</li>
+      <li>목록3</li>
+    </ul>
+    `;
+    root2.innerText = `
+    <ul>
+      <li>목록1</li>
+      <li>목록2</li>
+      <li>목록3</li>
+    </ul>
+    `;
+    // const ul = document.createElement('ul');
+    // const li = document.createElement('li');
+    // ul.appendChild(li);
+    // root.appendChild(ul);
+    //root.innerText = '테스트';
+  </script>
+</body>
+</html>

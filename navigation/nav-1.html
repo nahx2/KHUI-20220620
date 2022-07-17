@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>목록태그 활용예제</title>
+  <script src="https://kit.fontawesome.com/05195cb64c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./nav-style.css">
+</head>
+<body>
+  <header>
+   <h1>Java Camp</h1>
+    <ul class="gnb">
+      <li class="on"> <a href="">JAVA</a></li>
+     <li> <a href="">ORACLE</a></li>
+     <li> <a href="">HTML5</a></li>
+     <li> <a href="">JAVASCRIPT</a></li>
+     <li> <a href="">NODEJS</a></li>
+     <li> <a href="">REACT</a></li>
+    </ul>
+    <ul class="Lnb">
+      <li> <a href=""><i class="far fa-envelope"></i></a></li>
+      <li> <a href=""><i class="fab fa-facebook-square"></i></a></li>
+    </ul>
+   
+      <a href="" class="btnMenu"><i class="fas fa-bars"></i></a>
+       </header>
+       <main class="camp-bg">
+        <div class="video-wrap">
+        <video src="./forest.mp4" muted autoplay loop></video>
+        </div>
+       </main>
+       <script>
+        const btns = document.querySelector(".gnb li");
+        btns.forEach((btn,index)=>{
+          btn.addEventListener('click',(e)=>{
+            console.log(index); //메뉴 리스트의 순번이 0,1,2
+            for(let item of btns){
+              item.classList.remove('on');
+            }
+            btns[index].classList.add('on');
+          });
+        })
+       </script>
+</body>
+</html>
+
+<!-- 
+  Global Navigation Bar : 전체페이지를 구성하는 메뉴 gnb
+  Local Navigation Bar : 로컬페이지를 구성하는 메뉴 - Lnb
+ -->
+

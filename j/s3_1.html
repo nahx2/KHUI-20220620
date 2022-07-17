@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      border: 1px solid red;
+    }
+    .box1{
+      width: 400px;
+      height: auto;
+      border-radius: 3%;
+      box-shadow: 5px 5px 5px 5px gray;
+      margin: 30px;
+    }
+    .box2{
+      margin: 25px;
+      text-align: center;
+    }
+    .box2>.box2_1{
+      height: 30px;
+      width: 100%;
+    }
+    .box2_1>div{
+      display: inline-flex;
+      float: right;
+    }
+    .box2_1>.sj{
+      float: left;
+    }
+    .card{
+      border-radius: 50%;
+    }
+    h2{
+      margin-top: 30px;
+    }
+    h6{
+      margin-top: -10px;
+      color: lightgray;
+    }
+    .box2_2{
+      /* display: inline-block; */
+      /* border-radius: 2em */
+      /* border-top-left-radius: 50% ; */
+      -moz-outline-radius-topleft: 20%;
+      background-color:greenyellow;
+      color: white;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      
+    }
+    .box2_3{
+      height: 15%;
+    }
+    .box2_3>h6{
+      margin-left: -50px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: inline-flex;
+    }
+    .box2_3>.fb{
+      margin-left: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: inline-flex;
+      float: left;
+    }
+    .box2_4>h6{
+      margin-left: -50px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: inline-flex;
+    }
+    .box2_4>.mi{
+      margin-left: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: inline-flex;
+      float: left;
+    }
+    .box3{
+      margin: 25px;
+      text-align: center;
+    }
+    .box3>img{
+      margin-left: 15px;
+    }
+    .k1{
+      background-color: cyan;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      color: cyan;
+      box-shadow: 2px 2px 2px 2px cyan;
+    }
+    .k2{
+      margin-left: 10px;
+      background-color: greenyellow;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      color: greenyellow;
+      box-shadow: 2px 2px 2px 2px greenyellow;
+    }
+    .k3{
+      margin-left: 10px;
+      background-color: pink;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      color: pink;
+      box-shadow: 2px 2px 2px 2px pink;
+    }
+    .k4{
+      margin-left: 10px;
+      background-color: plum;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      color: plum;
+      box-shadow: 2px 2px 2px 2px plum;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 카드 시작 -->
+  <div class="box1">
+    <!-- 카드 1박스 시작 -->
+    <div class="box2">
+       <!-- 카드 1라인 시작 -->
+      <div class="box2_1">
+        <div class="sj">
+        <div><img src="./KakaoTalk_20220701_175023249.jpg" alt="말풍" width="20"></div>
+        </div>
+        <div class="pg">
+          <div><img src="./KakaoTalk_20220701_175023373.png" alt="하트" width="20"></div>
+          </div>
+        </div>
+             <!-- 카드 1라인 끝 -->
+      <!-- 카드 이미지 시작-->
+      <img class="card" src="images\maxresdefault.jpg" alt="오복이" width="150" height="150">
+      <!-- 카드 이미지 끝 -->
+      <h2>오복이</h2>
+      <h6>I'm cool puppy</h6>
+       <!-- 카드 2라인 시작 -->
+      <div class="box2_2">
+        &nbsp;&nbsp;&nbsp;<b>VIEW MORE</b>&nbsp;&nbsp;&nbsp;
+      </div>
+      <!-- 카드 2라인 끝 -->
+      <!-- 카드 3라인 시작 -->
+      <!-- 카드 3라인 시작 -->
+      <div class="box2_3">
+        <img class ="fb" src="./KakaoTalk_20220701_175023249.jpg" alt="말풍" width="15" height="15">
+        <h6>Visit My Facebook page.</h6>
+        </div>
+         <!-- 카드 3라인 끝 -->
+         <!-- 카드 4라인 시작 -->
+         <div class="box2_4">
+           <img class ="mi" src="./KakaoTalk_20220701_175023373.png" alt="하트" width="15" height="15">
+           <h6>tomato@nate.com</h6>
+          </div>
+          <!-- 카드 4라인 끝 -->
+        </div>
+            <!-- 카드 1박스 끝 -->
+            <!-- 카드 2박스 시작 -->
+            <div class="box3">
+              <input class="k1" type="button" value="" onclick="location.href='http://127.0.0.1:55253/s3.html'" >
+              <input class="k2" type="button" value="" onclick="location.href='http://127.0.0.1:55253/s3_1.html'" >
+              <input class="k3" type="button" value="" onclick="location.href='http://127.0.0.1:55253/s3_2.html'" >
+              <input class="k4" type="button" value="" onclick="location.href='http://127.0.0.1:55253/s3_3.html'" >
+            </div>
+    
+      
+    </div>
+  </div>
+</body>
+</html>

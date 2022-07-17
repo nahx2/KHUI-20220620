@@ -1,0 +1,27 @@
+<!DOCTYPE html><!-- 선언문 생략가능 - 브라우저(크롬-V8엔진-구글오픈소스-C++개발) -->
+<html lang="en"><!-- 태그명 영문 -->
+<head>
+  <meta charset="UTF-8"><!-- 인코딩타입은 다국어지원 - 리액트,AJAX,빈태그 empty tag -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 주석 html,xml
+  다운로드(로컬) - DOM트리 구성(브라우저가) - 인터프리터(통역) - 출력
+  -->
+  <script>
+    //document.write(); document는 브라우저에서 제공되는 내장객체이다. - xxx.html문서의 상위객체
+    //document의 최상위객체가 window
+   window.onload = function(){
+    //h1노드는 태그이름은 있고 값은 없다
+    const header = document.createElement("h1");
+    //텍스트 노드는 태그이름은 없고 값만 있다
+    const textNode = document.createTextNode("DOM TREE");
+    //노드를 연결합니다.
+    header.appendChild(textNode);
+    
+   }
+  </script>
+</body>
+</html>

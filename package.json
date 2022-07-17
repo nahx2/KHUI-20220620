@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "colors": "^1.4.0",
+    "nodemon": "^2.0.16"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+    
+  },
+  "name": "ui-20220620",
+  "description": "",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nahx2/UI-20220620.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nahx2/UI-20220620/issues"
+  },
+  "homepage": "https://github.com/nahx2/UI-20220620#readme"
+}
