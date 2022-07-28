@@ -268,7 +268,9 @@
 db.collection("ntc").where("cate", "==", "공지사항")
 .get()
 .then((querySnapshot) => {
+  
    querySnapshot.forEach((doc) => {
+    $(document).ready(function(){
        // doc.data() is never undefined for query doc snapshots
        const template2 = `
      <tr>
@@ -282,6 +284,7 @@ db.collection("ntc").where("cate", "==", "공지사항")
        </tr>
      `;
      $(".board-content").append(template2);
+      })
        console.log(doc.id, " => ", doc.data());
    });
 })
