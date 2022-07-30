@@ -25,7 +25,7 @@
  crossorigin="anonymous"
 ></script>
  <!-- ////////// 부트위에 내 설정하려면 젤 늦게 실행하게 링크를 뒤에 둬야함 /////////// -->
- <link rel="stylesheet" href="./gym-sc-main2.css">
+ <link rel="stylesheet" href="./gym-sc-gong.css">
 </head>
 <body>
   <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
@@ -53,14 +53,10 @@
   <script>
       const db = firebase.firestore();
     let num = 0;
-
-    db.collection("ntc")
-    .orderBy("write_date","desc")
-    .get()
+    db.collection("ntc").where("cate", "==", "공지사항")
+      .get()
       .then((snapshot) => {
-        
-        snapshot
-        .forEach((item)=>{
+        snapshot.forEach((item)=>{
           // console.log(doc.data());
           const template = `
           <tr>
@@ -70,13 +66,13 @@
                 ${item.data().subject}
               </a></td>
               <td>${item.data().writer}</td>
-              <td class="write_d">${item.data().write_date}</td>
+              <td>${item.data().write_date}</td>
             </tr>
           `;
           $(".board-content").append(template);
         })
       })
-      
+       
       
    
          </script>
@@ -212,7 +208,7 @@
     <!-- 등록 버튼 1대1문의랑 후기(고객) / 관리자는 전체 -->
     <section class="section03">
       <div class="btn-regi">
-        <button type="submit" class="btn btn-light" onclick = "location.href = './gym-sc-gong-regi.html'">게시글등록</button>
+        <button type="button" class="btn btn-light">게시글등록</button>
       </div>
     </section>
     <!-- ////////// section03 끝 /////////// -->
