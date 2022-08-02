@@ -66,7 +66,7 @@
           <tr>
               <th scope="row">${++num}</th>
               <td>${item.data().cate}</td>
-              <td><a href="./read.html?id=${item.id}"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
+              <td><a href="./cs-modal.html?id=${item.id}"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
                 ${item.data().subject}
               </a></td>
               <td>${item.data().writer}</td>
@@ -76,11 +76,19 @@
           $(".board-content").append(template);
         })
       })
-      
-      
-   
          </script>
-        
+        <script>
+
+          //수정버튼 눌렀을 때
+          document.getElementById("modify").addEventListener('click',()=>{
+                    // 로그아웃 기능구현하기
+                    
+                      alert('수정.');
+                      window.location = "cs-modal-modify.html";
+                    }).catch((error) => {
+                      console.log(error);
+                    });
+          </script>
  
          
     <!-- ////////// header 시작 /////////// -->
