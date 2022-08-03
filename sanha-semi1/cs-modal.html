@@ -5,7 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>글 상세보기</title>
-    <!-- <link rel="stylesheet" href="./board.css" /> -->
+    <script language="javascript">
+      //버튼클릭시 javascript 호출합니다.
+      function javascript(){
+
+    //팝업창에서 부모창을 다른페이지로 이동합니다.
+     window.opener.location.href="http://127.0.0.1:61350/sanha-semi1/gym-sc-gong-regi.html";
+      }
+      </script>
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -24,7 +31,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
- 
+    <script language="JavaScript"> window.name = "Test_Dialog"; </script>
   </head>
   <body>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
@@ -72,8 +79,6 @@
         });
         });
     </script>
-
-    <!-- Modal -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -112,11 +117,23 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary" id="modify">Save changes</button>
+            <input type='button' onclick='javascript()' value='버튼'/>
           </div>
         </div>
       </div>
     </div>
   </body>
 </html>
+<!-- <script>
+  $(document).ready(function() {   
 
+$(document).on('click', '#up', function(e) {           
+
+location.href='./gym-sc-gong-regi.html';       
+
+ 
+
+});            
+
+}); 
+</script> -->
