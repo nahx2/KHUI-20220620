@@ -51,33 +51,47 @@
   </script>
   <!-- 데이터 가져오기 -->
   <script>
-      const db = firebase.firestore();
-    let num = 0;
+   const db = firebase.firestore();
+       let num = 0;
+       let newsList = [];
+       let newsList2 = [];
+       const store = {
+  currentPage: 1,
+};
 
-    db.collection("ntc")
+       const first = db.collection("ntc")
     .orderBy("write_date","desc")
     .get()
-      .then((snapshot) => {
+      .then(  (snapshot) => {
         
-        snapshot
-        .forEach((item)=>{
-          // console.log(doc.data());
-          const template = `
-          <tr>
+      
+        for (
+          let i = (store.currentPage - 1) * 5;
+        i < store.currentPage * 5;
+        i++
+      ){
+        newsList2.push(`<tr>    
               <th scope="row">${++num}</th>
-              <td>${item.data().cate}</td>
+              <td>${newsList[i]}</td>
               // 수정으로 넘어가게 하는 모달창임 수정 없는 모달창은 그냥 cs-modal로
-              <td><a href="./cs-modal-modify.html?id=${item.id}"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
-                ${item.data().subject}
+              <td><a href="./cs-modal-modify.html?id=${newsList[i][1]}"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
+                ${newsList[i]}
               </a></td>
-              <td>${item.data().writer}</td>
-              <td class="write_d">${item.data().write_date}</td>
-            </tr>
-          `;
-          $(".board-content").append(template);
-        })//데이터 넣기
-
-      })
+              <td>${newsList[i]}</td>
+              <td class="write_d">${newsList[i]}</td>
+            </tr>`)
+          }
+          newsList2.push(`<div>
+            <a href="#/page/${
+              store.currentPage > 1 ? store.currentPage - 1 : 1
+            }">이전페이지</a>
+            <a href="#/page/${store.currentPage + 1}">다음페이지</a>
+            </div>
+            `);
+            $(".board-content").append(newsList2);
+            
+        })
+    
          </script>
     <!-- ////////// header 시작 /////////// -->
     <header class="header">

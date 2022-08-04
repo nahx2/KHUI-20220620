@@ -103,8 +103,6 @@ $(document).ready(function () {
   });
 });
 $(document).ready(function () {
-  //어떤버튼을 누르든 상관없이모달 2가 꺼지면 리로드되기
-  //히든될때마다 리로드돼서 첫번째모달에선 못씀
   document.getElementById("mo1-close").onclick = () => {
     console.log("버튼 누르고 첫창 넘어왔나요?");
     location.href = "gym-sc-main2.html";
