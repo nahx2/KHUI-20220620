@@ -19,8 +19,46 @@ let num = 0;
 const btnPage = 0;
 // 한 페이지에 보여질 게시글의 갯수
 let unit = 3;
-const totalSnapshot = [];
+const newsList = [];
+const store = {
+  currentPage: 1,
+};
+function getNewsList() {
+  console.log("getNewsList 호출 성공");
 
+  db.collection("ntc")
+    .orderBy("write_date", "desc")
+    .limit(unit)
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((item) => {
+        newsList.push(`
+  <tr>
+  <th scope="row">${++num}</th>
+  <td>${item.data().cate}</td>
+  // 수정으로 넘어가게 하는 모달창임 수정 없는 모달창은 그냥 cs-modal로
+  <td><a href="./cs-modal-modify.html?id=${
+    item.id
+  }"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
+    ${item.data().subject}
+  </a></td>
+  <td>${item.data().writer}</td>
+  <td class="write_d">${item.data().write_date}</td>
+</tr>
+`);
+        $(".board-content").append(newsList);
+      });
+    });
+  //insert - 페이징처리를 고려한 for문으로 변경
+  newsList.push(`<div>
+            <a href="#/page/${
+              store.currentPage > 1 ? store.currentPage - 1 : 1
+            }">이전페이지</a>
+            <a href="#/page/${store.currentPage + 1}">다음페이지</a>
+          </div>
+        `);
+}
+///////////////////// end of getNewsList()
 db.collection("ntc")
   .get()
   .then((snapshot) => {

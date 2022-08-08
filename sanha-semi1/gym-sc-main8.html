@@ -54,15 +54,17 @@
       const db = firebase.firestore();
     let num = 0;
 
-    db.collection("ntc")
+       let newsList = [];
+
+       const first = db.collection("ntc")
     .orderBy("write_date","desc")
     .get()
-      .then((snapshot) => {
+      .then( async (snapshot) => {
         
         snapshot
         .forEach((item)=>{
           // console.log(doc.data());
-          const template = `
+          newsList.push(`
           <tr>
               <th scope="row">${++num}</th>
               <td>${item.data().cate}</td>
@@ -73,11 +75,32 @@
               <td>${item.data().writer}</td>
               <td class="write_d">${item.data().write_date}</td>
             </tr>
-          `;
-          $(".board-content").append(template);
+          `);
         })//데이터 넣기
+        $(".board-content").append(newsList);
+        
+        console.log(newsList[1]);
+        console.log(newsList.length);
+  
+  
+  // Get the last document
+  const last = newsList[newsList.length-1];
+  console.log(last);
+  
+  // Construct a new query starting at this document.
+  // Note: this will not have the desired effect if multiple
+  // cities have the exact same population value.
+  const nextSnapshot = db.collection("ntc")
+    .orderBy("write_date","desc")
+    .startAfter(last)
+    .limit(3)
+    .get();
+    console.log(nextSnapshot);
 
-      })
+  console.log('Num results:', nextSnapshot.length);
+    })
+          $(".board-content").append(template);
+
          </script>
     <!-- ////////// header 시작 /////////// -->
     <header class="header">
@@ -262,14 +285,7 @@
       });
     });
   </script>
-  <script>
-    let option = {
-      numberperPage = 5,
-      goBar:ture,
-      PageCounter:ture,
-    }
-    paginate.init('')
-  </script>
+ 
    
 </body>
 </html>

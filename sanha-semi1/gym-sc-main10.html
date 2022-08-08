@@ -19,8 +19,6 @@
  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
  crossorigin="anonymous"
 ></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://rawgit.com/yahoo/intl-messageformat/v1.3.0/dist/intl-messageformat-with-locales.min.js"></script>
 <script
  src="https://code.jquery.com/jquery-3.6.0.min.js"
  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -28,15 +26,82 @@
 ></script>
  <!-- ////////// 부트위에 내 설정하려면 젤 늦게 실행하게 링크를 뒤에 둬야함 /////////// -->
  <link rel="stylesheet" href="./gym-sc-main2.css">
- <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
- <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
- <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
- <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
-  <script src="./gym-sc-main2-1.js"></script>
 </head>
-
 <body>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+  <script>
+   
+  const firebaseConfig = {
+    apiKey: "AIzaSyDtVA_IYoYtVpeDuUF_UmKLFwOlg44CAic",
+    authDomain: "terrgym-demo-bac70.firebaseapp.com",
+    databaseURL: "https://terrgym-demo-bac70-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "terrgym-demo-bac70",
+    storageBucket: "terrgym-demo-bac70.appspot.com",
+    messagingSenderId: "679211028162",
+    appId: "1:679211028162:web:d6839267c5c25146ccb55b"
+  };
+
+  // Initialize Firebase
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <!-- 데이터 가져오기 -->
+  <script>
+
+        const db = firebase.firestore();
+       let num = 0;
+       let newsList = [];
+
+       const first = db.collection("ntc")
+    .orderBy("write_date","desc")
+    .limit(3)
+    .get()
+      .then( async (snapshot) => {
+        
+        snapshot
+        .forEach((item)=>{
+          // console.log(doc.data());
+          newsList.push(`
+          <tr>
+              <th scope="row">${++num}</th>
+              <td>${item.data().cate}</td>
+              // 수정으로 넘어가게 하는 모달창임 수정 없는 모달창은 그냥 cs-modal로
+              <td><a href="./cs-modal-modify.html?id=${item.id}"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
+                ${item.data().subject}
+              </a></td>
+              <td>${item.data().writer}</td>
+              <td class="write_d">${item.data().write_date}</td>
+            </tr>
+          `);
+        })//데이터 넣기
+        $(".board-content").append(newsList);
+        
+        console.log(newsList[1]);
+        console.log(newsList.length);
+  
+  
+  // Get the last document
+  const last = newsList[newsList.length-1];
+  console.log(last);
+  
+  // Construct a new query starting at this document.
+  // Note: this will not have the desired effect if multiple
+  // cities have the exact same population value.
+  const nextSnapshot = db.collection("ntc")
+    .orderBy("write_date","desc")
+    .startAfter(last)
+    .limit(3)
+    .get();
+    console.log(nextSnapshot);
+
+  console.log('Num results:', nextSnapshot.length);
+    })
+
+         </script>
     <!-- ////////// header 시작 /////////// -->
     <header class="header">
       <div class="header_container">
@@ -144,7 +209,6 @@
     </section>
     <!-- ////////// section01 끝 section02 시작 테이블 /////////// -->
     <section class="section02">
-      <h3></h3>
       <!-- 테이블 크기 줄이기위한 방편=테이블박스 ㅡㅡ부트라 이래야하나봄 -->
       <div class="table-box"> 
       <table class= "table table-hover">
@@ -173,15 +237,15 @@
     <!-- ////////// section03 끝 /////////// -->
     <section class="section04">
         <div class="paging-box">
-        <ul class="board-pagination justify-content-center">
-          <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <ul class="pagination justify-content-center" id="pagination-demo">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">4</a></li>
             <li class="page-item"><a class="page-link" href="#">5</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul> -->
+          </ul>
         </div>
       </section>
       <!-- ////////// section04 끝 /////////// -->
@@ -220,6 +284,14 @@
         btns[index].classList.add('on');
       });
     });
+  </script>
+  <script>
+    let option = {
+      numberperPage = 5,
+      goBar:ture,
+      PageCounter:ture,
+    }
+    paginate.init('')
   </script>
    
 </body>
