@@ -1,18 +1,4 @@
-// html에 있어서 겹친다고 뭐라함...
-// // Your web app's Firebase configuration
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDtVA_IYoYtVpeDuUF_UmKLFwOlg44CAic",
-//   authDomain: "terrgym-demo-bac70.firebaseapp.com",
-//   databaseURL:
-//     "https://terrgym-demo-bac70-default-rtdb.asia-southeast1.firebasedatabase.app",
-//   projectId: "terrgym-demo-bac70",
-//   storageBucket: "terrgym-demo-bac70.appspot.com",
-//   messagingSenderId: "679211028162",
-//   appId: "1:679211028162:web:d6839267c5c25146ccb55b",
-// };
-
-// // Initialize Firebase - 바로 호출하게 바꿔버림
-// firebase.initializeApp(firebaseConfig);
+//close 버튼 구현을 ...^^ 빠뜨렷네요 오늘 바로 해드릴게요
 
 // 화면이 렌더링되는 것과 스크립트 처리사이에 시간차
 $(document).ready(function () {
@@ -95,16 +81,16 @@ $(document).ready(function () {
   };
 });
 $(document).ready(function () {
-  //어떤버튼을 누르든 상관없이모달 2가 꺼지면 리로드되기
+  //어떤버튼을 누르든 상관없이 모달 2가 꺼지면 리로드
   //히든될때마다 리로드돼서 첫번째모달에선 못씀
   $("#exampleModalToggle").on("hidden.bs.modal", function () {
     console.log("모달2에서 첫창 넘어왔나요?");
-    location.href = "gym-sc-main2.html";
+    location.href = "gym-sc-main-f.html";
   });
 });
 $(document).ready(function () {
   document.getElementById("mo1-close").onclick = () => {
     console.log("버튼 누르고 첫창 넘어왔나요?");
-    location.href = "gym-sc-main2.html";
+    location.href = "gym-sc-main-f.html";
   };
 });
