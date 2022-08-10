@@ -156,6 +156,7 @@
       nowPage = param.get("nowPage");
 
     db.collection("ntc")
+    .where("cate", "==", "이벤트")
     .orderBy("write_date","desc")
     .get()
       .then((snapshot) => {
@@ -192,7 +193,7 @@
         }//데이터 넣기
         $(".pagenation").append("");
         /*페이지 네비게이션 처리 위치*/
-        const pagePath = "gym-sc-main-fp.html"
+        const pagePath = "gym-sc-gong-f.html"
           const pb = new PageBar(numPerPage, total, nowPage, pagePath);
           // out.print(pb.getPageBar()); class PageBar에서 생성되는 링크
           $(".pagenation").append(pb.getPageBar());
@@ -265,61 +266,56 @@
     </div>
   </header>
   <!-- ////////// header 끝 main 시작 /////////// -->
-
   <main class="main">
-
     <!-- ////////// section01 시작 왼:카테고리 오른:검색 /////////// -->
     <section class="section01">
       <div class = "sc01">
         <div class = "sc01-left">
-         <ul class="nav">
-           <li class="nav-item">
-            <a class="nav-link" href="./gym-sc-gong-f.html">공지사항</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="./gym-sc-eve-f.html">이벤트</a>
-           </li>
-           <li class="nav-item">
-            <li class="nav-item">
-           </li>
-           <li class="nav-item">
-            <a class="nav-link">자주 하는 질문</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="./gym-sc-review-f.html">후기</a>
-           </li>
-         </ul>
-        </div>
-        <!-- left끝 right시작 -->
-        <div class = "sc01-right">
-         <nav class="navbar navbar-expand-lg bg-light" id="navbarexpendlgbglight">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           <select
-            class="form-select"
-            aria-label="분류선택"
-            name="gubun"
-            id="gubun"
-           >
-            <option defaultValue>분류선택</option>
-            <option value="subject">제목</option>
-            <option value="writer">작성자</option>
-            <option value="content">내용</option>
-           </select>
-         </div>
-         <div class="search_box">
-          <div class="search_input">
-           <input type="text" name ="keyword" id="keyword" class="form-control" placeholder="검색어를 입력하세요" aria-label="검색어를 입력하세요" aria-describedby="검색어를 입력하세요">
-          </div>
-          <div class="search_btn">
-           <button class="btn btn-danger" id="btnSearch" onclick="searchList()">검색</button>
-          </div>
-         </div>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="./gym-sc-gong-f.html">공지사항</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./gym-sc-eve-f.html">이벤트</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link">1:1 문의</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">자주 하는 질문</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="./gym-sc-review-f.html">후기</a>
+        </li>
+      </ul>
+    </div>
+    <div class = "sc01-right">
+      <nav class="navbar navbar-expand-lg bg-light" id="navbarexpendlgbglight">
+        <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              전체
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">전체</a></li>
+              <li><a class="dropdown-item" href="#">내용</a></li>
+              <li><a class="dropdown-item" href="#">작성자</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input id="search_value" class="form-control me-4" type="search" placeholder="" aria-label="Search">
+          <button class="btn.btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
         </nav>
-       </div>
-        <!-- right끝 -->
+  </div>
+      </div>
     </div>
     </section>
-    
   </br>
     <!-- ////////// section01 끝 section02 시작 테이블 /////////// -->
     <section class="section02">

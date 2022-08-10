@@ -20,7 +20,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Dosis&display=swap');
   </style>
   <!--   여기를 파일별로 수정해주세요!   -->
-  <script src="./gym-sc-main2.js"></script>
+  <script src="./gym-sc-main2.js" defer></script>
   <link rel="stylesheet" href="./gym-sc-main2.css">
 </head>
 <body>
@@ -31,174 +31,8 @@
   <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
   <!-- 파이어베이스 -->
-<script>
-   
-  const firebaseConfig = {
-    apiKey: "AIzaSyDtVA_IYoYtVpeDuUF_UmKLFwOlg44CAic",
-    authDomain: "terrgym-demo-bac70.firebaseapp.com",
-    databaseURL: "https://terrgym-demo-bac70-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "terrgym-demo-bac70",
-    storageBucket: "terrgym-demo-bac70.appspot.com",
-    messagingSenderId: "679211028162",
-    appId: "1:679211028162:web:d6839267c5c25146ccb55b"
-  };
 
-  // Initialize Firebase
-
-    firebase.initializeApp(firebaseConfig);
-  </script>
-   <script>
-    //전체레코드 갯수
-    class PageBar {
-      totalRecord;
-      //페이지당 레코드 수
-      numPerPage; // 10개씩이다
-      //블럭당 디폴트 페이지 수 
-      pagePerBlock = 5;
-      //총페이지 수
-      totalPage;
-      //총블럭 수
-      totalBlock;
-      //현재 내가 바라보는 페이지 수
-      nowPage;
-      //현재 내가 바라보는 블럭 수
-      nowBlock;
-      //적용할 페이지 이름
-      pagePath;
-      pagination;
-      // 자바와는 다르게 오버로딩을 지원하지 않ㅇ아..컨벤션
-      constructor(numPerPage, totalRecord, nowPage, pagePath) {
-        this.numPerPage = numPerPage;
-        this.totalRecord = totalRecord;
-        //alert(totalRecord);
-        this.nowPage = nowPage;
-        this.pagePath = pagePath;
-        this.totalPage = Math.ceil(this.totalRecord / this.numPerPage); // 47.0/10=> 4.7 4.1->5page 4.2->5page
-        this.totalBlock = Math.ceil(this.totalPage / this.pagePerBlock); //5.0/2=> 2.5-> 3장
-        //현재 내가바라보는 페이지 : (int)((double)4-1/2)
-        this.nowBlock = Math.floor(this.nowPage / this.pagePerBlock);
-      }
-      //setter메소드 선언
-      setPageBar() {
-        console.log("nowBlock:" + this.nowBlock);
-        let pageLink = "";
-        //전체 레코드 수가 0보다 클때 처리하기
-        if (this.totalRecord > 0) {
-          //nowBlock이 0보다 클때 처리
-          //이전 페이지로 이동 해야 하므로 페이지 번호에 a태그를 붙여야 하고
-          //pagePath뒤에 이동할 페이지 번호를 붙여서 호출 해야함.
-          if (this.nowBlock > 0) {
-            //(1-1)*2+(2-1)=1
-            pageLink +=
-              "<button><a href='" +
-              this.pagePath +
-              "?nowPage=" +
-              ((this.nowBlock - 1) * this.pagePerBlock +
-                (this.pagePerBlock - 1)) +
-              "'>";
-            pageLink += "<img border=0 src='./images/bu_a.gif'>";
-            pageLink += "</a></button>&nbsp;&nbsp;";
-          }
-          for (let i = 0; i < this.pagePerBlock; i++) {
-            //현재 내가 보고 있는 페이지 블록 일때와
-            if (this.nowBlock * this.pagePerBlock + i == this.nowPage) {
-              pageLink +=
-                "<b>" +
-                (this.nowBlock * this.pagePerBlock + i + 1) +
-                "</b>&nbsp;";
-            }
-            //그렇지 않을 때를 나누어 처리해야 함.
-            else {
-              pageLink +=
-                "<button><a href='" +
-                this.pagePath +
-                "?nowPage=" +
-                (this.nowBlock * this.pagePerBlock + i) +
-                "'>" +
-                (this.nowBlock * this.pagePerBlock + i + 1) +
-                "</a></button>&nbsp;";
-            }
-            //모든 경우에 pagePerBlock만큼 반복되지 않으므로 break처리해야 함.
-            //주의할 것.
-            if (this.nowBlock * this.pagePerBlock + i + 1 == this.totalPage)
-              break;
-          }
-          //현재 블록에서 다음 블록이 존재할 경우 이미지 추가하고 페이지 이동할 수 있도록
-          //a태그 활용하여 링크 처리하기
-          if (this.totalBlock > this.nowBlock + 1) {
-            pageLink +=
-              "&nbsp;&nbsp;<a href='" +
-              this.pagePath +
-              "?nowPage=" +
-              (this.nowBlock + 1) * this.pagePerBlock +
-              "'>";
-            pageLink += "<img border=0 src='/images/bu_b.gif'>";
-            pageLink += "</a>";
-          }
-        }
-        this.pagination = pageLink;
-      }
-      //getter메소드 선언
-      getPageBar() {
-        this.setPageBar();
-        return this.pagination;
-      }
-    }
-  </script>
-  <!-- 데이터 가져오기 -->
-  <script>
-      const db = firebase.firestore();
-    let num = 0;
-    let total = 0;
-      let numPerPage = 3;
-      let nowPage = 0;
-      let param = new URLSearchParams(document.location.search);
-      nowPage = param.get("nowPage");
-
-    db.collection("ntc")
-    .orderBy("write_date","desc")
-    .get()
-      .then((snapshot) => {
-        
-        console.log(snapshot); //[Object, Object] -> JSON.parse
-
-        console.log(JSON.stringify(snapshot));
-        total = snapshot.docs.length;
-        console.log("전체레코드수==>" + total);
-        for (
-            let i = nowPage * numPerPage;
-            i < nowPage * numPerPage + numPerPage;
-            i++
-          ) {
-            if (total === i) break;
-            num = i;
-            console.log(
-              snapshot.docs[i].id + ", 제목" + snapshot.docs[i].data().subject
-            );
- 
-          const template = `
-          <tr>
-              <th scope="row">${++num}</th>
-              <td>${snapshot.docs[i].data().cate}</td>
-              // 수정으로 넘어가게 하는 모달창임 수정 없는 모달창은 그냥 cs-modal로
-              <td><a href="./cs-modal-modify.html?id=${snapshot.docs[i].id}"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
-                ${snapshot.docs[i].data().subject}
-              </a></td>
-              <td>${snapshot.docs[i].data().writer}</td>
-              <td class="write_d">${snapshot.docs[i].data().write_date}</td>
-            </tr>
-          `;
-          $(".board-content").append(template);
-        }//데이터 넣기
-        $(".pagenation").append("");
-        /*페이지 네비게이션 처리 위치*/
-        const pagePath = "gym-sc-main-fp.html"
-          const pb = new PageBar(numPerPage, total, nowPage, pagePath);
-          // out.print(pb.getPageBar()); class PageBar에서 생성되는 링크
-          $(".pagenation").append(pb.getPageBar());
-      });
-
-         </script>
+  
          <div class="body_wrap">
           <div class="left_line"></div>
           <a href="" class="top">&nbsp⇧</a>
@@ -265,61 +99,53 @@
     </div>
   </header>
   <!-- ////////// header 끝 main 시작 /////////// -->
-
   <main class="main">
-
     <!-- ////////// section01 시작 왼:카테고리 오른:검색 /////////// -->
     <section class="section01">
       <div class = "sc01">
         <div class = "sc01-left">
-         <ul class="nav">
-           <li class="nav-item">
-            <a class="nav-link" href="./gym-sc-gong-f.html">공지사항</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="./gym-sc-eve-f.html">이벤트</a>
-           </li>
-           <li class="nav-item">
-            <li class="nav-item">
-           </li>
-           <li class="nav-item">
-            <a class="nav-link">자주 하는 질문</a>
-           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="./gym-sc-review-f.html">후기</a>
-           </li>
-         </ul>
-        </div>
-        <!-- left끝 right시작 -->
-        <div class = "sc01-right">
-         <nav class="navbar navbar-expand-lg bg-light" id="navbarexpendlgbglight">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           <select
-            class="form-select"
-            aria-label="분류선택"
-            name="gubun"
-            id="gubun"
-           >
-            <option defaultValue>분류선택</option>
-            <option value="subject">제목</option>
-            <option value="writer">작성자</option>
-            <option value="content">내용</option>
-           </select>
-         </div>
-         <div class="search_box">
-          <div class="search_input">
-           <input type="text" name ="keyword" id="keyword" class="form-control" placeholder="검색어를 입력하세요" aria-label="검색어를 입력하세요" aria-describedby="검색어를 입력하세요">
-          </div>
-          <div class="search_btn">
-           <button class="btn btn-danger" id="btnSearch" onclick="searchList()">검색</button>
-          </div>
-         </div>
+      <ul class="nav">
+        <li class="nav-item">
+          <button id="gong"><a class="nav-link" >공지사항</a></button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">1:1 문의</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">자주 하는 질문</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">후기</a>
+        </li>
+      </ul>
+    </div>
+    <div class = "sc01-right">
+      <nav class="navbar navbar-expand-lg bg-light" id="navbarexpendlgbglight">
+        <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              전체
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">전체</a></li>
+              <li><a class="dropdown-item" href="#">내용</a></li>
+              <li><a class="dropdown-item" href="#">작성자</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input id="search_value" class="form-control me-4" type="search" placeholder="" aria-label="Search">
+          <button class="btn.btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
         </nav>
-       </div>
-        <!-- right끝 -->
+  </div>
+      </div>
     </div>
     </section>
-    
   </br>
     <!-- ////////// section01 끝 section02 시작 테이블 /////////// -->
     <section class="section02">

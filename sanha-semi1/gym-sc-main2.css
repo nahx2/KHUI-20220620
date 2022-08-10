@@ -213,20 +213,36 @@ background: linear-gradient(to right, rgb(14, 1, 71), rgb(36, 1, 189));
 
 .section01 {
   background-color: white;
+  padding-left: 10%;
+  padding-right: 10%;
 }
-.sc01-left .li .a {
+.sc01 {
+  display: flex;
+}
+.sc01-left {
+  padding-right: 35%;
+}
+
+.search_box {
+  display: flex;
+}
+.sc01-left li a {
   color: black;
 }
 .section02 {
   background-color: white;
-  padding: 7% 7%;
+  padding-left: 7%;
+  padding-right: 7%;
   text-align: center;
 }
 .section03 {
   background-color: white;
   display: flex;
   color: black;
+  padding-left: 7%;
+  padding-right: 7%;
 }
+
 .section03 button {
   border-radius: 20%;
 }
