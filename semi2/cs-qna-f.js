@@ -174,9 +174,9 @@ function dbtable() {
   let nowPage = 0;
   let param = new URLSearchParams(document.location.search);
   nowPage = param.get("nowPage");
-  //카테가 공지사항인 데이터 데리고오기
+  //카테가 이벤트인 데이터 데리고오기
   db.collection("ntc")
-    .where("cate", "==", "공지사항")
+    .where("cate", "==", "자주하는질문")
     .orderBy("write_date", "desc")
     .get()
     .then((snapshot) => {
@@ -214,7 +214,7 @@ function dbtable() {
       } //데이터 넣기
       $(".pagenation").append("");
       /*페이지 네비게이션 처리 위치*/
-      const pagePath = "cs-gong-f.html";
+      const pagePath = "cs-qna-f.html";
       const pb = new PageBar(numPerPage, total, nowPage, pagePath);
       // out.print(pb.getPageBar()); class PageBar에서 생성되는 링크
       $(".pagenation").append(pb.getPageBar());

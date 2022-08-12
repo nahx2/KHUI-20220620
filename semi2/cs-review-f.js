@@ -176,7 +176,7 @@ function dbtable() {
   nowPage = param.get("nowPage");
   //카테가 공지사항인 데이터 데리고오기
   db.collection("ntc")
-    .where("cate", "==", "공지사항")
+    .where("cate", "==", "후기")
     .orderBy("write_date", "desc")
     .get()
     .then((snapshot) => {
@@ -214,7 +214,7 @@ function dbtable() {
       } //데이터 넣기
       $(".pagenation").append("");
       /*페이지 네비게이션 처리 위치*/
-      const pagePath = "cs-gong-f.html";
+      const pagePath = "cs-review-f.html";
       const pb = new PageBar(numPerPage, total, nowPage, pagePath);
       // out.print(pb.getPageBar()); class PageBar에서 생성되는 링크
       $(".pagenation").append(pb.getPageBar());
