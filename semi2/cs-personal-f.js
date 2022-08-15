@@ -198,9 +198,8 @@ function dbtable() {
         const template = `
           <tr>
               <th scope="row">${++num}</th>
-              <td>${snapshot.docs[i].data().cate}</td>
               // 수정으로 넘어가게 하는 모달창임 수정 없는 모달창은 그냥 cs-modal로
-              <td><a href="./cs-modal-modify.html?id=${
+              <td><a href="./cs-modal-modify_p.html?id=${
                 snapshot.docs[i].id
               }"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
                 ${snapshot.docs[i].data().subject}
@@ -233,7 +232,7 @@ function searchList() {
   let param = new URLSearchParams(document.location.search);
   nowPage = param.get("nowPage");
 
-  db.collection("ntc")
+  db.collection("QNA")
     .where(choice, "==", user_search)
     // .orderBy("write_date", "desc")
     .get()
@@ -259,7 +258,7 @@ function searchList() {
               <th scope="row">${++num}</th>
               <td>${snapshot.docs[i].data().cate}</td>
               // 수정으로 넘어가게 하는 모달창임 수정 없는 모달창은 그냥 cs-modal로
-              <td><a href="./cs-modal-modify.html?id=${
+              <td><a href="./cs-modal-modify_p.html?id=${
                 snapshot.docs[i].id
               }"><button type="button" class="btn btn-primary" data-bs-toggle="modal">
                 ${snapshot.docs[i].data().subject}

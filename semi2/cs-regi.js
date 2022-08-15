@@ -73,6 +73,7 @@ function userSessionCheck() {
     console.log(user.uid);
     const db = firebase.firestore();
     const storage = firebase.storage();
+
     $("#register").click(function () {
       const file = document.querySelector("#image").files[0];
       const storageRef = storage.ref();
@@ -97,36 +98,42 @@ function userSessionCheck() {
       const write_date = $("#write_date").val();
       // const writer = user.displayName;
       const content = $("#content").val();
+      data();
+      // location.href = "cs-main-f.html";
+      function data() {
+        if ("1:1문의" == cate) {
+          db.collection("QNA")
+            .add({
+              uid: user.uid,
+              cate: cate,
+              subject: subject,
+              write_date: write_date,
+              writer: user.displayName,
+              content: content,
+            })
 
-      if ("1:1문의" == cate) {
-        db.collection("QNA")
-          .add({
-            uid: user.uid,
-            cate: cate,
-            subject: subject,
-            write_date: write_date,
-            writer: user.displayName,
-            content: content,
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          db.collection("ntc")
+            .add({
+              uid: user.uid,
+              cate: cate,
+              subject: subject,
+              write_date: write_date,
+              writer: user.displayName,
+              content: content,
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
         alert("등록되었습니다");
-      } else {
-        db.collection("ntc")
-          .add({
-            uid: user.uid,
-            cate: cate,
-            subject: subject,
-            write_date: write_date,
-            writer: user.displayName,
-            content: content,
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        alert("등록되었습니다");
-      }
-    });
+        setTimeout(function () {
+          window.location = "cs-main-f.html";
+        }, 1500);
+      } //data
+    }); //click
   });
 }

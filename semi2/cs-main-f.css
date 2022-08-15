@@ -160,57 +160,6 @@ body {
   border: 0px;
 }
 
-.main_container {
-  background-color: white;
-  border-bottom: 2px solid #aaaaaa; /* 2 메뉴아래 구분선 */
-  margin-left: 1rem;
-}
-
-/* 영상이 화면에 맞춰지도록 하기 */
-.video-wrap video {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* .video-wrap{
-position: relative;
-width: 100%;
-background: linear-gradient(to right, rgb(14, 1, 71), rgb(36, 1, 189));
-}
-
-.video-wrap video{
-  /* min-width: 500px;
-  min-height: 320px; */
-/* position: absolute; */
-/* height: 120vh; */
-/* left: 50%; */
-/* transform: translateX(-50%); */
-/* width: auto; */
-/* } */
-
-.text-wrap {
-  position: absolute;
-  z-index: 2;
-  /* height: 100vh; 뷰포트 */
-  padding: 0% 3%;
-  left: 3%;
-  top: 30%;
-}
-
-.text-wrap h1 {
-  letter-spacing: 0.2rem;
-  font-family: "Ruda", sans-serif;
-}
-
-.text-wrap p {
-  margin-bottom: 1rem;
-}
-
-.main_container {
-  border-bottom: 2px solid #aaaaaa; /* 2 메뉴아래 구분선 */
-}
-
 .section01 {
   background-color: white;
   padding-left: 10%;
@@ -234,6 +183,15 @@ background: linear-gradient(to right, rgb(14, 1, 71), rgb(36, 1, 189));
   padding-left: 7%;
   padding-right: 7%;
   text-align: center;
+}
+a {
+  color: black;
+}
+.btn {
+  border: none;
+  /* background-color: rgba(14, 1, 71, 0.89); */
+  background-color: white;
+  width: 100%;
 }
 .section03 {
   background-color: white;

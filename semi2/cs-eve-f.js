@@ -199,7 +199,7 @@ function dbtable() {
         const template = `
           <tr>
               <th scope="row">${++num}</th>
-              <td>${snapshot.docs[i].data().cate}</td>
+              
               // 수정으로 넘어가게 하는 모달창임 수정 없는 모달창은 그냥 cs-modal로
               <td><a href="./cs-modal-modify.html?id=${
                 snapshot.docs[i].id
